@@ -1,5 +1,8 @@
 import React from "react";
 
+import ItemStatusFilter from './item-status-filter';
+import "./search-panel.css";
+
 const SeacrhPanel = () => {
   const SeacrhText = "type something...";
   const SearchStyle = {
@@ -7,7 +10,16 @@ const SeacrhPanel = () => {
     fontSize: "20px",
   };
 
-  return <input style={SearchStyle} placeholder={SeacrhText} />;
+  return (
+    <div className="search-panel">
+      <input
+        className="search-panel-input"
+        style={SearchStyle}
+        placeholder={SeacrhText}
+      />
+      <ItemStatusFilter/>
+    </div>
+  );
 };
 
 export default SeacrhPanel;

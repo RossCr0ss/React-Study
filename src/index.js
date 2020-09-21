@@ -5,6 +5,8 @@ import AppHeader from './components/app-header';
 import SeacrhPanel from './components/search-panel';
 import TodoList from './components/todo-list';
 
+import './index.css';
+
 
 const todoData = [
   {label: 'Drink Coffee', important: false, id: 0},
@@ -14,7 +16,7 @@ const todoData = [
 
 const App = () => {
   return (
-    <div>
+    <div className="container">
       <AppHeader />
       <SeacrhPanel />
       <TodoList todos= {todoData}/>

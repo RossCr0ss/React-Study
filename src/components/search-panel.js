@@ -4,17 +4,12 @@ import ItemStatusFilter from './item-status-filter';
 import "./search-panel.css";
 
 const SeacrhPanel = () => {
-  const SeacrhText = "type something...";
-  const SearchStyle = {
-    color: "gray",
-    fontSize: "20px",
-  };
-
+  const SeacrhText = "Type to search...";
+  
   return (
     <div className="search-panel">
       <input
         className="search-panel-input"
-        style={SearchStyle}
         placeholder={SeacrhText}
       />
       <ItemStatusFilter/>

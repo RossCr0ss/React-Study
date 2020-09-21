@@ -1,17 +1,17 @@
-.status-panel-filter {
+.todo-list-item-control {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 10px;
+    grid-column-gap: 5px;
 }
 
-.status-panel-filter button {
+.todo-list-item-control button {
     font-size: 12pt;
     color: #4d00b1;
     border: 1px solid #4d00b1;
     border-radius: 3px;
 }
 
-.status-panel-filter button:hover {
+.todo-list-item-control button:hover {
     background-color: #4d00b1;
     border-color: #FFF;
     outline: none;

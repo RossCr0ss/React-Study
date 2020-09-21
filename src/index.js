@@ -1,22 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const AppHeader = () => {
-  return <h1>Todo List</h1>;
-};
-
-const SeacrhPanel = () => {
-  return <input type="search" placeholder="type something" />;
-};
-
-const TodoList = () => {
-  return (
-    <ul>
-      <li>Learn React</li>
-      <li>Build Awesome App</li>
-    </ul>
-  );
-};
+import AppHeader from './components/app-header';
+import SeacrhPanel from './components/search-panel';
+import TodoList from './components/todo-list';
 
 const App = () => {
   return (
@@ -28,4 +15,4 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,7 +1,7 @@
 .todo-list {
     display: grid;
     max-width: 800px;
-    grid-auto-columns: minmax(320px, auto);
+    grid-auto-columns: minmax(300px, auto);
     list-style-type: none;
     padding: 10px 5px;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-import ItemStatusFilter from './item-status-filter';
+import ItemStatusFilter from '../item-status-filter';
 import "./search-panel.css";
 
 const SeacrhPanel = () => {

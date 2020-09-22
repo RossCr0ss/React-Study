@@ -9,6 +9,7 @@
     color: #4d00b1;
     border: 1px solid #4d00b1;
     border-radius: 3px;
+    max-height: 25px;
 }
 
 .todo-list-item-control button:hover {

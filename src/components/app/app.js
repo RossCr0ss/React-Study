@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <AppHeader />
+      <AppHeader toDo={1} done={3} />
       <SeacrhPanel />
       <TodoList todos={todoData} />
     </div>

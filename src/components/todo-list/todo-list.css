@@ -16,3 +16,8 @@
     grid-template-columns: 2fr 1fr;
     grid-column-gap: 10px;
 }
+
+.todo-list .todo-list-item:hover {
+    outline: none !important;
+    box-shadow: 0 0 5px #4d00b1;
+}

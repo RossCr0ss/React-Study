@@ -1,12 +1,21 @@
-import React from "react";
+import React, { Component } from "react";
 
-import './todo-list-item.css'
+import "./todo-list-item.css";
 
-const TodoListItem = ({ label, important = false }) => {
-  const itemStyle = {
-    color: important ? "tomato" : "black",
+export default class TodoListItem extends Component {
+  onLabelClick = () => {
+    console.log(`Done: ${this.props.label}`);
   };
-  return <span style={itemStyle} className="text"> {label}</span>;
-};
+  render() {
+    const { label, important = false } = this.props;
 
-export default TodoListItem;
+    const itemStyle = {
+      color: important ? "tomato" : "black",
+    };
+    return (
+      <span style={itemStyle} className="text" onClick={this.onLabelClick}>
+        {label}
+      </span>
+    );
+  }
+}

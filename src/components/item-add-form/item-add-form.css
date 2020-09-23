@@ -1,0 +1,24 @@
+.item-add-form {
+    display: 100%;
+}
+
+.item-add-form .button {
+    font-size: 12pt;
+    color: #4d00b1;
+    border: 1px solid #4d00b1;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+.item-add-form .button:active {
+    background-color: #4d00b1;
+    border-color: #FFF;
+    outline: none;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.item-add-form .button:hover {
+    outline: none !important;
+    box-shadow: 0 0 5px #4d00b1;
+}

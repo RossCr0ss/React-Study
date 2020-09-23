@@ -3,30 +3,12 @@ import React, { Component } from "react";
 import "./todo-list-item.css";
 
 export default class TodoListItem extends Component {
-  state = {
-    done: false,
-    important: false,
-  };
+ 
 
-  onLabelClick = () => {
-    this.setState(({ done }) => {
-      return {
-        done: !done,
-      };
-    });
-  };
-
-  onMarkImportant = () => {
-    this.setState(({ important }) => {
-      return {
-        important: !important,
-      };
-    });
-  };
+  
 
   render() {
-    const { label, onDeleted } = this.props;
-    const { done, important } = this.state;
+    const { label, onDeleted, onToggleDone, onToggleImportant, done, important } = this.props;
 
     let classNames = "box";
     if (done) {
@@ -43,10 +25,10 @@ export default class TodoListItem extends Component {
           {label}
         </span>
 
-        <button type="button" className="button" onClick={this.onMarkImportant}>
+        <button type="button" className="button" onClick={onToggleImportant}>
           &#9873;
         </button>
-        <button type="button" className="button" onClick={this.onLabelClick}>
+        <button type="button" className="button" onClick={onToggleDone}>
           &#x2713;
         </button>
         <button type="button" className="button" onClick={onDeleted}>

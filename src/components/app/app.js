@@ -8,14 +8,13 @@ import ItemAddform from "../item-add-form";
 import "./app.css";
 
 export default class App extends Component {
-
   maxID = 100;
 
   state = {
     todoData: [
-      { label: "Drink Coffee", important: false, id: 0 },
-      { label: "Build Awesome App", important: true, id: 1 },
-      { label: "Learn React", important: false, id: 2 },
+      this.createTodoItem("Drink Coffee"),
+      this.createTodoItem("Build Awesome App"),
+      this.createTodoItem("Learn React"),
     ],
   };
 
@@ -33,27 +32,45 @@ export default class App extends Component {
       };
     });
   };
+  createTodoItem(label) {
+    return {
+      label,
+      important: false,
+      done: false,
+      id: this.maxID++,
+    };
+  }
+
+  toggleProperty(arr, id, property) {
+    const idx = arr.findIndex((el) => el.id === id);
+
+    const oldItem = arr[idx];
+    const newItem = { ...oldItem, [property]: !oldItem[property] };
+
+    return [...arr.slice(0, idx), newItem, ...arr.slice(idx + 1)];
+  }
 
   onToggleImportant = (id) => {
-    console.log('onToggleImportant', id);
-  }
+    this.setState(({ todoData }) => {
+      return {
+        todoData: this.toggleProperty(todoData, id, "important"),
+      };
+    });
+  };
 
   onToggleDone = (id) => {
-    console.log('onToggleDone', id);
-  }
+    this.setState(({ todoData }) => {
+      return {
+        todoData: this.toggleProperty(todoData, id, "done"),
+      };
+    });
+  };
 
   addItem = (text) => {
-    const newItem = {
-      label: text,
-      important: false,
-      id: this.maxID++
-    };
+    const newItem = this.createTodoItem(text);
 
     this.setState(({ todoData }) => {
-      const newTodoData = [
-        ...todoData,
-        newItem
-      ];
+      const newTodoData = [...todoData, newItem];
 
       return {
         todoData: newTodoData,
@@ -62,15 +79,18 @@ export default class App extends Component {
   };
 
   render() {
+    const { todoData } = this.state;
+    const doneCount = todoData.filter((el) => el.done).length;
+    const toDoCount = todoData.length - doneCount;
     return (
       <div className="container">
-        <AppHeader toDo={1} done={3} />
+        <AppHeader toDo={toDoCount} done={doneCount} />
         <SeacrhPanel />
         <TodoList
-          todos={this.state.todoData}
+          todos={todoData}
           onDeleted={(id) => this.deleteItem(id)}
           onToggleImportant={(id) => this.onToggleImportant(id)}
-          onToggleDone = {(id) => this.onToggleDone(id)}
+          onToggleDone={(id) => this.onToggleDone(id)}
         />
         <ItemAddform addItem={() => this.addItem("Hello World")} />
       </div>

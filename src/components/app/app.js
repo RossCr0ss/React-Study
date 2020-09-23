@@ -17,7 +17,10 @@ const App = () => {
     <div className="container">
       <AppHeader toDo={1} done={3} />
       <SeacrhPanel />
-      <TodoList todos={todoData} />
+      <TodoList
+        todos={todoData}
+        onDeleted={(id) => console.log(`delete item: ${id}`)}
+      />
     </div>
   );
 };

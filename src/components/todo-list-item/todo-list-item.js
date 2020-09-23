@@ -25,7 +25,7 @@ export default class TodoListItem extends Component {
   };
 
   render() {
-    const { label } = this.props;
+    const { label, onDeleted } = this.props;
     const { done, important } = this.state;
 
     let classNames = "box";
@@ -39,18 +39,18 @@ export default class TodoListItem extends Component {
 
     return (
       <div className={classNames}>
-        <span className="box-text" onClick={this.onLabelClick}>
+        <span className="box-text">
           {label}
         </span>
 
-        <button type="button" className="button">
-          &#9998;
-        </button>
         <button type="button" className="button" onClick={this.onMarkImportant}>
           &#9873;
         </button>
-        <button type="button" className="button">
+        <button type="button" className="button" onClick={this.onLabelClick}>
           &#x2713;
+        </button>
+        <button type="button" className="button" onClick={onDeleted}>
+          &#10006;
         </button>
       </div>
     );

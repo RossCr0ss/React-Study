@@ -27,7 +27,15 @@
     max-height: 33px;
 }
 
-.box.important button:nth-child(3) {
+.box.important button:nth-child(2) {
+    background-color: #4d00b1;
+    border-color: #FFF;
+    outline: none;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.box.done button:nth-child(3) {
     background-color: #4d00b1;
     border-color: #FFF;
     outline: none;

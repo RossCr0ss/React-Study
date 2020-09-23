@@ -1,7 +1,6 @@
 import React from "react";
 
 import TodoListItem from "../todo-list-item";
-import TodoListItemControl from '../todo-list-item-control';
 
 import './todo-list.css'
 
@@ -11,7 +10,6 @@ const TodoList = ({ todos }) => {
     return (
       <li className="todo-list-item" key={id}>
         <TodoListItem {...itemProps} />
-        <TodoListItemControl />
       </li>
     );
   });

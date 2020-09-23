@@ -5,31 +5,54 @@ import "./todo-list-item.css";
 export default class TodoListItem extends Component {
   state = {
     done: false,
+    important: false,
   };
+
   onLabelClick = () => {
-    this.setState({
-      done: true,
+    this.setState(({ done }) => {
+      return {
+        done: !done,
+      };
     });
   };
+
+  onMarkImportant = () => {
+    this.setState(({ important }) => {
+      return {
+        important: !important,
+      };
+    });
+  };
+
   render() {
-    const { label, important = false } = this.props;
-    const { done } = this.state;
-    let ClassNames = "text";
+    const { label } = this.props;
+    const { done, important } = this.state;
+
+    let classNames = "box";
     if (done) {
-      ClassNames += " done";
+      classNames += " done";
     }
 
-    const itemStyle = {
-      color: important ? "tomato" : "#4d00b1",
-    };
+    if (important) {
+      classNames += " important";
+    }
+
     return (
-      <span
-        style={itemStyle}
-        className={ClassNames}
-        onClick={this.onLabelClick}
-      >
-        {label}
-      </span>
+      <div className={classNames}>
+        <span className="box-text" onClick={this.onLabelClick}>
+          {label}
+        </span>
+
+        <button type="button" className="button">
+          &#9998;
+        </button>
+        <button type="button" className="button" onClick={this.onMarkImportant}>
+          &#9873;
+        </button>
+        <button type="button" className="button">
+          &#x2713;
+        </button>
+      </div>
     );
   }
 }

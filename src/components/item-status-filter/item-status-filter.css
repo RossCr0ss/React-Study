@@ -20,7 +20,6 @@
 }
 
 .status-panel-filter button:hover {
-    background-color: #FFF;
     outline: none !important;
     box-shadow: 0 0 5px #4d00b1;
 }

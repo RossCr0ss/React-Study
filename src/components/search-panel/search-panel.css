@@ -21,6 +21,11 @@
     box-shadow: 0 0 5px #4d00b1;
 }
 
+.search-panel-input:hover {
+    outline: none !important;
+    box-shadow: 0 0 5px #4d00b1;
+}
+
 .search-panel-input::placeholder {
     color: #4d00b1;
     opacity: 1;

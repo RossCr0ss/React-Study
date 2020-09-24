@@ -12,7 +12,6 @@
 
 .box-text {
     font-size: 14pt;
-    cursor: pointer;
 }
 
 .done .box-text {
@@ -25,6 +24,7 @@
     border: 1px solid #4d00b1;
     border-radius: 3px;
     max-height: 33px;
+    cursor: pointer;
 }
 
 .box.important button:nth-child(2) {

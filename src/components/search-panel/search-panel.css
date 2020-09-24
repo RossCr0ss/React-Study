@@ -29,6 +29,7 @@
 .search-panel-input::placeholder {
     color: #4d00b1;
     opacity: 1;
+    font-size: 12pt;
 }
 
 @media screen and (max-width: 600px) {

@@ -1,5 +1,6 @@
 .item-add-form {
     display: 100%;
+    display: flex;
 }
 
 .item-add-form .button {
@@ -8,6 +9,7 @@
     border: 1px solid #4d00b1;
     border-radius: 3px;
     padding: 5px 10px;
+    margin-left: 5px;
 }
 
 .item-add-form .button:active {
@@ -21,4 +23,31 @@
 .item-add-form .button:hover {
     outline: none !important;
     box-shadow: 0 0 5px #4d00b1;
+}
+
+.item-add-form .input {
+    box-sizing: border-box;
+    border: 1px solid #4d00b1;
+    border-radius: 4px;
+    color: #4d00b1;
+    background-color: #EFEFEF;
+    font-size: 16pt;
+    padding: 5px;
+}
+
+.item-add-form input:focus {
+    background-color: #FFF;
+    outline: none !important;
+    box-shadow: 0 0 5px #4d00b1;
+}
+
+.item-add-form input:hover {
+    outline: none !important;
+    box-shadow: 0 0 5px #4d00b1;
+}
+
+.item-add-form input::placeholder {
+    color: #4d00b1;
+    opacity: 1;
+    font-size: 12pt;
 }

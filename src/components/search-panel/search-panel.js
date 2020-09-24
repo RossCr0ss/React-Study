@@ -1,20 +1,30 @@
-import React from "react";
+import React, {Component} from "react";
 
-import ItemStatusFilter from '../item-status-filter';
 import "./search-panel.css";
 
-const SeacrhPanel = () => {
-  const SeacrhText = "Type to search...";
-  
-  return (
-    <div className="search-panel">
-      <input
-        className="search-panel-input"
-        placeholder={SeacrhText}
-      />
-      <ItemStatusFilter/>
-    </div>
-  );
-};
+export default class SeacrhPanel extends Component {
+  state = {
+    term: ''
+  };
 
-export default SeacrhPanel;
+  onTermChange = (e) => {
+    const {onSearchChange = () => {}} = this.props;
+    this.setState({
+      term: e.target.value
+    });
+    onSearchChange(e.target.value);
+  }
+
+  render() {
+    return (
+      <div className="search-panel">
+        <input
+          className="search-panel-input"
+          placeholder="Type to search..."
+          onChange={this.onTermChange}
+          value={this.state.term}
+        />
+      </div>
+    );
+  }
+}

@@ -19,6 +19,14 @@
     cursor: pointer;
 }
 
+.status-panel-filter button.active {
+    background-color: #4d00b1;
+    border-color: #FFF;
+    outline: none;
+    color: #FFF;
+    cursor: pointer;
+}
+
 .status-panel-filter button:hover {
     outline: none !important;
     box-shadow: 0 0 5px #4d00b1;

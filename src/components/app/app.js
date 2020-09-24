@@ -4,6 +4,7 @@ import AppHeader from "../app-header";
 import SeacrhPanel from "../search-panel";
 import TodoList from "../todo-list";
 import ItemAddform from "../item-add-form";
+import ItemStatusFilter from "../item-status-filter";
 
 import "./app.css";
 
@@ -16,6 +17,8 @@ export default class App extends Component {
       this.createTodoItem("Build Awesome App"),
       this.createTodoItem("Learn React"),
     ],
+    search: "",
+    filter: "all",
   };
 
   deleteItem = (id) => {
@@ -40,7 +43,6 @@ export default class App extends Component {
       id: this.maxID++,
     };
   }
-
   toggleProperty(arr, id, property) {
     const idx = arr.findIndex((el) => el.id === id);
 
@@ -49,7 +51,6 @@ export default class App extends Component {
 
     return [...arr.slice(0, idx), newItem, ...arr.slice(idx + 1)];
   }
-
   onToggleImportant = (id) => {
     this.setState(({ todoData }) => {
       return {
@@ -57,7 +58,6 @@ export default class App extends Component {
       };
     });
   };
-
   onToggleDone = (id) => {
     this.setState(({ todoData }) => {
       return {
@@ -65,7 +65,6 @@ export default class App extends Component {
       };
     });
   };
-
   addItem = (text) => {
     const newItem = this.createTodoItem(text);
 
@@ -77,17 +76,51 @@ export default class App extends Component {
       };
     });
   };
+  onSearchChange = (search) => {
+    this.setState({ search });
+  };
+  onFilterChange = (filter) => {
+    this.setState({ filter });
+  };
+  searchItems(items, search) {
+    if (search.length === 0) {
+      return items;
+    }
+
+    return items.filter((item) => {
+      return item.label.toLowerCase().indexOf(search.toLowerCase()) > -1;
+    });
+  }
+  filterItems(items, filter) {
+    if (filter === "all") {
+      return items;
+    } else if (filter === "active") {
+      return items.filter((item) => !item.done);
+    } else if (filter === "done") {
+      return items.filter((item) => item.done);
+    }
+  }
 
   render() {
-    const { todoData } = this.state;
+    const { todoData, search, filter } = this.state;
+    const visibleItems = this.searchItems(
+      this.filterItems(todoData, filter),
+      search
+    );
     const doneCount = todoData.filter((el) => el.done).length;
     const toDoCount = todoData.length - doneCount;
     return (
       <div className="container">
         <AppHeader toDo={toDoCount} done={doneCount} />
-        <SeacrhPanel />
+        <div className="filter-box">
+          <SeacrhPanel onTermChange={this.onSearchChange} />
+          <ItemStatusFilter
+            filter={filter}
+            onFilterChange={this.onFilterChange}
+          />
+        </div>
         <TodoList
-          todos={todoData}
+          todos={visibleItems}
           onDeleted={(id) => this.deleteItem(id)}
           onToggleImportant={(id) => this.onToggleImportant(id)}
           onToggleDone={(id) => this.onToggleDone(id)}

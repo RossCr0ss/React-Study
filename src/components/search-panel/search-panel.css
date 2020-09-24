@@ -1,8 +1,6 @@
 .search-panel {
     display: grid;
     max-width: 800px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 20px;
 }
 
 .search-panel-input {
@@ -30,12 +28,4 @@
     color: #4d00b1;
     opacity: 1;
     font-size: 12pt;
-}
-
-@media screen and (max-width: 600px) {
-    .search-panel {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(2, 1fr);
-        grid-row-gap: 20px;
-    }
 }
